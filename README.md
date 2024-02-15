@@ -1,5 +1,8 @@
 # Setup Development Environment 
 
+#Why the decompile process:
+ - try to figure out a key / create a modified version of it
+
 ## Normal Process
 Before starting development, you need to set up the API Key. Define the API Key provided by Nothing in the `AndroidManifest.xml` file of your application, within the `<application>` tag. Here is how to do it:
 

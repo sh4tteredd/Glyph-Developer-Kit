@@ -1,6 +1,6 @@
 # Setup Development Environment 
 
-#Why the decompile process:
+# Why the decompile process:
  - try to figure out a key / create a modified version of it
 
 ## Normal Process

@@ -11,7 +11,7 @@ public class GlyphFrame {
 
     private int mInterval = 0;
 
-    private static int DEFAULT_LIGHT = 4000;
+    private static final int DEFAULT_LIGHT = 4000;
 
     private GlyphFrame(Builder builder) {
         this.mPeriod = builder.period;

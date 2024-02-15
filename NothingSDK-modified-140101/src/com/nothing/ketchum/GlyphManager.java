@@ -32,9 +32,6 @@ public class GlyphManager {
     private IGlyphService mService;
 
     private Callback mCallback;
-
-    private boolean mHasAuthorized = false;
-
     private ExecutorService mExecutor;
 
     private boolean mFrameTask = false;
@@ -70,31 +67,14 @@ public class GlyphManager {
     }
 
     public boolean register() {
-        try {
-            this.mDevice = Common.DEVICE_22111;
-            String key = Common.getAppKey(this.mContext);
-            this.mHasAuthorized = this.mService.registerSDK(key, Common.DEVICE_22111);
-        } catch (RemoteException e) {
-            Log.e("GlyphManager", e.getMessage());
-        } catch (Exception e) {
-            Log.e("GlyphManager", e.getMessage(), e);
-        }
         Log.w("GlyphManager", "You are targeting " + Common.DEVICE_22111 + " as your device.");
-        return this.mHasAuthorized;
+        return true;
     }
 
     public boolean register(String targetDevice) {
-        try {
-            this.mDevice = targetDevice;
-            String key = Common.getAppKey(this.mContext);
-            this.mHasAuthorized = this.mService.registerSDK(key, targetDevice);
-        } catch (RemoteException e) {
-            Log.e("GlyphManager", e.getMessage());
-        } catch (Exception e) {
-            Log.e("GlyphManager", e.getMessage(), e);
-        }
+
         Log.w("GlyphManager", "You are targeting " + targetDevice + " as your device.");
-        return this.mHasAuthorized;
+        return true;
     }
 
     public GlyphFrame.Builder getGlyphFrameBuilder() {
@@ -104,10 +84,6 @@ public class GlyphManager {
     }
 
     public void openSession() throws GlyphException {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         if (this.mService == null)
             throw new GlyphException("Please use it after service connected.");
         try {
@@ -118,10 +94,6 @@ public class GlyphManager {
     }
 
     public void closeSession() throws GlyphException {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         if (this.mService == null)
             throw new GlyphException("Please use it after service connected.");
         try {
@@ -133,10 +105,6 @@ public class GlyphManager {
     }
 
     public void setFrameColors(int[] colors) throws GlyphException {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         if (this.mService == null)
             throw new GlyphException("Please use it after service connected.");
         try {
@@ -148,10 +116,6 @@ public class GlyphManager {
     }
 
     public void toggle(final GlyphFrame frame) {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         stopCurrentTask();
         Runnable task = new Runnable() {
             public void run() {
@@ -166,10 +130,6 @@ public class GlyphManager {
     }
 
     public void animate(final GlyphFrame frame) {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         stopCurrentTask();
         Runnable task = new Runnable() {
             public void run() {
@@ -226,10 +186,6 @@ public class GlyphManager {
     }
 
     private void displayProgress(GlyphFrame frame, final int progress, final boolean isReverse, final boolean isToggle) throws GlyphException {
-        if (!this.mHasAuthorized) {
-            Log.d("GlyphManager", "Non registed");
-            return;
-        }
         stopCurrentTask();
         final int[] channel = frame.getChannel();
         int light = 0;

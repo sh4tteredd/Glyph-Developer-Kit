@@ -72,7 +72,7 @@ public class GlyphManager {
     }
 
     public boolean register(String targetDevice) {
-
+        this.mDevice = targetDevice;
         Log.w("GlyphManager", "You are targeting " + targetDevice + " as your device.");
         return true;
     }

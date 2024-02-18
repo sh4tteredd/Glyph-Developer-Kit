@@ -9,12 +9,10 @@ In the `NothingSDK-original-140101` folder of the repo you can find the source c
 - build a JAR
 
 - test it
-  
+
 The JAR file will be available on GitHub as soon as i get a working version of the "workaround"
 
 ---
-
-
 
 # Setup Development Environment
 
@@ -72,6 +70,7 @@ Add two segments to AndroidManifest.xml
    ```xml
    <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
    ```
+
 2. Add API Key <br>
    
    ```xml

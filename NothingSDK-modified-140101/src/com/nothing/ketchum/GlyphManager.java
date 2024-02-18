@@ -67,6 +67,7 @@ public class GlyphManager {
     }
 
     public boolean register() {
+        this.mDevice = Common.DEVICE_22111;
         Log.w("GlyphManager", "You are targeting " + Common.DEVICE_22111 + " as your device.");
         return true;
     }
